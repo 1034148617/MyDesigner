@@ -8,7 +8,7 @@
                 @mousedown="useMousePointHandle($event, point, item.attr)"></div>
         </template>
         <!-- 选中 -->
-        <div class="shape-modal" :style="useDockModelStyle(item.option.Dock, item.attr)">
+        <div class="shape-modal" :style="useDockModelStyle(item.dock, item.attr)">
             <div class="shape-modal-select" :class="{ active: select }"></div>
             <div class="shape-modal-change" :class="{ selectActive: select, hoverActive: hover }"></div>
         </div>

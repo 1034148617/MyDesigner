@@ -140,25 +140,19 @@ export const useEditStore = defineStore({
             return this.layersList[this.targetLayers]
         },
         getLayersTree(): any {
-            interface Tree {
-                id: string
-                label: string
-                children?: Tree[]
-            }
-
             const fetchNodes: any = (list: Array<any>) => {
                 const nodes = []
                 for (let i = 0; i < list.length; i++) {
                     if (list[i].isGroup && (list[i].layers == 1 || list[i].layers == this.targetLayers || this.targetLayers == 0)) {
                         nodes.push({
                             id: list[i].id,
-                            label: list[i].value,
+                            label: list[i].name,
                             children: fetchNodes(list[i].groupList)
                         })
                     } else if (list[i].layers == this.targetLayers || this.targetLayers == 0) {
                         nodes.push({
                             id: list[i].id,
-                            label: list[i].value
+                            label: list[i].name
                         })
                     }
                 }
@@ -285,8 +279,6 @@ export const useEditStore = defineStore({
             } else {
                 this.componentList.push(componentInstance)
             }
-
-            console.log(this.componentList)
         },
         // * 找到目标 id 数据的下标位置，id可为父级或子集数组（无则返回-1）
         fetchTargetIndex(id?: string): number {

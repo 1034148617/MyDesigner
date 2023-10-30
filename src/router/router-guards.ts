@@ -4,7 +4,7 @@ import { getComponentID } from "@/utils"
 import { useHttpStore } from "@/store/modules/httpStore/httpStore"
 
 function componentUrlFormat(to: any) {
-  const componentPath = "/component"
+  const componentPath = "/design"
   const fullPath = to.fullPath
   const params = to.params
 

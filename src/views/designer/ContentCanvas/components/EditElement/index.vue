@@ -6,7 +6,7 @@
     @mousedown="mousedownHandle($event, item)" 
     @mouseenter="mouseenterHandle($event, item)"
     @mouseleave="mouseleaveHandle($event, item)">
-    <component :is="item.key" :config="item">
+    <component :is="item.config.key" :config="item">
       <template v-for="(child, index) in item.groupList">
         <edit-element :item="child"></edit-element>
       </template>
@@ -18,7 +18,7 @@
     @mousedown="mousedownHandle($event, item)"
     @mouseenter="mouseenterHandle($event, item)" 
     @mouseleave="mouseleaveHandle($event, item)">
-    <component :is="item.key" :config="item"></component>
+    <component :is="item.config.key" :config="item"></component>
   </edit-shape-box>
 </template>
       

@@ -31,7 +31,7 @@ export function useComInstall() {
     }
 
     onMounted(async () => {
-        await loadData()
+        // await loadData()
         const componentList: Array<CreateComponentType | CreateComponentGroupType> = editStore.getComponentList
 
         if (componentList.length) {

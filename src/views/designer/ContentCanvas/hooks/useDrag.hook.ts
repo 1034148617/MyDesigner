@@ -290,7 +290,7 @@ export const useMouseHandle = () => {
         const [path, index] = editStore.computePath(id)
         if (path.length > 1) {
           const parentComponent = editStore.getComponetById(path[path.length - 2])
-          switch (parentComponent.option.Dock) {
+          switch (parentComponent.dock) {
             case GroupModeEnum.TOP:
             case GroupModeEnum.BOTTOM:
               canvasHeight = parentComponent.attr.h; break;

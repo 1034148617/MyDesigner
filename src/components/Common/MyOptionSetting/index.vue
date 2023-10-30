@@ -1,28 +1,28 @@
 <template>
   <div v-if="target.option">
     <!-- 文本输入框 -->
-    <n-input v-if="item.type == 'string'" v-model:value="target.option[item.key]" />
+    <n-input v-if="item.type == 'string'" v-model:value="item.value" />
     <!-- 数字输入框 -->
-    <n-input-number v-else-if="item.type == 'number'" v-model:value="target.option[item.key]" />
+    <n-input-number v-else-if="item.type == 'number'" v-model:value="item.value" />
     <!-- 文本域 -->
-    <n-input v-else-if="item.type == 'textarea'" v-model="target.option[item.key]" type="textarea"
+    <n-input v-else-if="item.type == 'textarea'" v-model="item.value" type="textarea"
       :placeholder="item.default" :autosize="{minRows: 2}" />
     <!-- 单选下拉框 -->
-    <n-select v-else-if="item.type == 'enum'" v-model:value="target.option[item.key]"
+    <n-select v-else-if="item.type == 'enum'" v-model:value="item.value"
       :options="options_from_enum(item.default)" />
     <!-- 单选按钮 -->
-    <n-radio-group v-else-if="item.type == 'select'" v-model:value="target.option[item.key]">
+    <n-radio-group v-else-if="item.type == 'select'" v-model:value="item.value">
       <n-radio-button v-for="btn in item.default" :key="btn.value" :value="btn.value" :label="btn.label" />
     </n-radio-group>
     <!-- 开关 -->   
-    <n-switch v-else-if="item.type == 'switch'" v-model:value="target.option[item.key]">
+    <n-switch v-else-if="item.type == 'switch'" v-model:value="item.value">
       <template #checked>{{ item.default.checked }}</template>
       <template #unchecked>{{ item.default.unchecked }}</template>
     </n-switch>
     <!-- 颜色选择器 -->
-    <el-color-picker v-else-if="item.type == 'color'" v-model="target.option[item.key]" show-alpha />
+    <el-color-picker v-else-if="item.type == 'color'" v-model="item.value" show-alpha />
     <!-- 复选框 -->
-    <n-checkbox-group v-else-if="item.type == 'checkbox'" v-model:value="target.option[item.key]">
+    <n-checkbox-group v-else-if="item.type == 'checkbox'" v-model:value="item.value">
       <n-checkbox v-for="value in item.default" :label="value" :value="value"></n-checkbox>
     </n-checkbox-group>
   </div>

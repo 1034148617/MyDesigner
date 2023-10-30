@@ -44,7 +44,7 @@ const onSave = async () => {
     }
     loading.value = false
 }
-
+            
 // 跳转到预览页面
 const rediectToPriview = () => {
     const id = fetchID(route.fullPath)

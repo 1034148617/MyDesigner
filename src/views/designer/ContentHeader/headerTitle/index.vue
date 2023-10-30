@@ -24,8 +24,8 @@ import { renderIcon } from '@/utils'
 import { icon } from '@/plugins'
 import { useLayoutStore } from '@/store/modules/layoutStore/layoutStore'
 import { DeviceTypeEnum, LayoutStoreEnum, } from '@/store/modules/layoutStore/layoutStore.d'
-import { useEditStore } from '@/store/modules/editStore/editStore';
-import { EditCanvasConfigEnum } from '@/store/modules/editStore/editStore.d';
+import { useEditStore } from '@/store/modules/editStore/editStore'
+import { EditCanvasConfigEnum } from '@/store/modules/editStore/editStore.d'
 const { DesktopOutlineIcon, PhonePortraitOutlineIcon, TabletLandscapeOutlineIcon } = icon.ionicons5
 
 const { setItem } = useLayoutStore()

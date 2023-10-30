@@ -19,7 +19,7 @@ const props = defineProps({
 const isShow = computed(() => {
     const route = useRoute()
     const path = route.fullPath
-    if (path.includes("/component/home"))
+    if (path.includes("/design"))
         return false
     return true
 })

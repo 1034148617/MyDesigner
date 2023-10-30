@@ -5,7 +5,6 @@ import { svgIcon } from "@/components/Base/SvgIcon"
 import { setupStore } from "@/store"
 import router, { setupRouter } from "@/router"
 import { setupComponents, setupNaive, setupElementPlus } from "@/plugins"
-
 import { setHtmlTheme } from "@/utils"
 
 async function init() {

@@ -46,7 +46,7 @@ const props = defineProps({
 })
 
 const getIconName = (id: string) => {
-    return editStore.getComponetById(id)?.config.iconName || "Default"
+    return editStore.getComponetById(id)?.config.icon || "Default"
 }
 
 const useTreeTheme = () => {

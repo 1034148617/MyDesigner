@@ -9,15 +9,6 @@ export enum BaseEvent {
   ON_RESIZE = 'resize',                       // 大小改变
 }
 
-/**
- * 组件事件类型
- */
-export enum ComponentEvent {
-  ON_FOCUS = 'focus',                          // 获得焦点
-  ON_BLUR = 'blur',                            // 失去焦点
-}
-
-
 // 内置字符串函数对象列表
 export const excludeParseEventKeyList = [
 

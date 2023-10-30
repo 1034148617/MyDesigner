@@ -1,15 +1,23 @@
-import { BaseEvent, ComponentEvent } from '@/enums/eventEnum'
+import { BaseEvent } from '@/enums/eventEnum'
 import { RequestHttpEnum, RequestDataTypeEnum } from '@/enums/httpEnum'
 import { GroupModeEnum } from '@/enums/componentEnum'
 import { StyleType } from '@/packages/style.d'
 
-// 组件配置项
+// 组件类型枚举
+export enum ComponentModeEnum {
+    "ATOM" = "atom",            // 原子组件
+    "GROUP" = "group",         // 容器分子组件
+    "MOLECULE" = "molecule"     // 分子组件
+}
+
+// 组件类配置项
 export type ConfigType = {
     key: string                  // 组件类名
     name: string                 // 组件名
-    type: string                 // 类型
-    branch?: string              // 分支
-    iconName?: string                // 图标名称
+    mode: ComponentModeEnum      // 模式
+    type: ComponentTypeEnum      // 类型
+    branch?: string              // 二级类型
+    icon?: string                // 图标名称
     img?: string                 // 用于拖拽渲染的图片
 }
 
@@ -23,33 +31,36 @@ export interface StatusType {
 
 // 画布控制属性（组件外部样式配置项）
 export interface AttrType {
-    x?: number
-    y?: number
-    w: number               // width
-    h: number               // height
-    zIndex?: number
-    offsetX?: number
-    offsetY?: number
+    w?: number               // width
+    h?: number               // height
+    x?: number               // x坐标
+    y?: number               // y坐标
+    zIndex?: number          // 层级
+    offsetX?: number         // x坐标偏移
+    offsetY?: number         // y坐标偏移
+}
+
+// 组件事件定义
+export interface EventType {
+    baseEvents: {
+        [K in BaseEvent]: any
+    },
+    componentEvents: {
+        [K: string]: any
+    }
 }
 
 // 组件基类接口
 export interface PublicConfigType {
     id: string              // 实例化对象id
-    value: string           // 实例化对象name
-    isGroup: boolean        // 是否为容器
+    isGroup: boolean        // 是否为分子组件
+    name: string            // 实例化对象name
     attr: AttrType          // 基本属性
-    dock: GroupModeEnum     // 模式控制
+    dock: GroupModeEnum     // 模式控制（兼容容器）
     status: StatusType      // 状态控制
     layers: number          // 图层控制
     style: StyleType        // 样式控制
-    events: {               // 事件控制
-        baseEvents: {
-            [K in BaseEvent]?: any
-        },
-        componentEvents: {
-            [K in ComponentEvent]?: any
-        }
-    }
+    events: EventType       // 事件控制
 }
 
 // 数据相关接口
@@ -77,10 +88,8 @@ export interface RequestConfig {
 
 // 单组件接口
 export interface CreateComponentType extends PublicConfigType, RequestConfig {
-    key: string,                         // ConfigType.key
     config: ConfigType,                  // index.ts default export
-    option?: { [T: string]: any }         // config.ts option
-    optionConfig?: { [T: string]: any }   // config.ts optionConfig
+    option: { [key: string]: ComponentOption }
 }
 
 // 容器组件接口
@@ -91,39 +100,60 @@ export interface CreateComponentGroupType extends CreateComponentType {
 // 获取组件实例类中某个key对应value类型的方法
 export type PickCreateComponentType<T extends keyof CreateComponentType> = Pick<CreateComponentType, T>[T]
 
+/********************************************/
+/************* 组件配置项类型 *****************/
+export type ComponentOption = {
+    label: string,              // 配置项名称
+    type: string,               // 配置项类型
+    default?: any,              // 配置项校验值（list、enum等）
+    value: any                  // 配置项默认值
+}
 
-// 组件分类
+// export function GetItem(options: Array<ComponentOption>, id: string) {
+//     for (const option of options) {
+//         if (option.id === id) {
+//             return option
+//         }
+//     }
+//     return undefined
+// }
+
+// export function GetValue(options: Array<ComponentOption>, id: string) {
+//     for (const option of options) {
+//         if (option.id === id) {
+//             return option.value
+//         }
+//     }
+//     return undefined
+// }
+
+// export function UpdateValue(options: Array<ComponentOption>, id: string, newValue: any) {
+//     for (const option of options) {
+//         if (option.id === id) {
+//             option.value = newValue;
+//             return;
+//         }
+//     }
+// }
+
+/********************************************/
+/*************** 组件分类 ********************/
+
 export enum ComponentTypeEnum {
     COMMON = 'common',
-    DATA_OUT = "dataOut",
-    DATA_IN = 'dataIn',
-    NAVIGATION = 'navigation',
     LAYOUT = 'layout',
-    FEEDBACK = "feedback",
-    STANDARD = 'standard'
 }
 
 export enum ComponentTypeNameEnum {
     COMMON = '通用',
-    DATA_IN = "数据录入",
-    DATA_OUT = '数据展示',
-    NAVIGATION = '导航',
     LAYOUT = '布局',
-    FEEDBACK = "反馈",
-    STANDARD = '标准'
 }
 
 export type ComponentType = {
     [ComponentTypeEnum.COMMON]: ConfigType[]
-    [ComponentTypeEnum.DATA_OUT]: ConfigType[]
-    [ComponentTypeEnum.DATA_IN]: ConfigType[]
-    [ComponentTypeEnum.NAVIGATION]: ConfigType[]
     [ComponentTypeEnum.LAYOUT]: ConfigType[]
-    [ComponentTypeEnum.FEEDBACK]: ConfigType[]
-    [ComponentTypeEnum.STANDARD]: ConfigType[]
 }
-
-
+/********************************************/
 
 
 

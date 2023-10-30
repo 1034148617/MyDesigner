@@ -4,6 +4,7 @@ import { Buffer } from "buffer"
 import { HttpStoreEnum, HttpStoreType } from "./httpStore.d"
 import { getLocalStorage, setLocalStorage } from "@/utils"
 import { StorageEnum } from "@/enums/storageEnum"
+import { url_loadProjectList } from "@/api/api"
 
 const { LOGIN_INFO_STORE } = StorageEnum
 
@@ -116,7 +117,7 @@ export const useHttpStore = defineStore({
       this.userConfig.isLogin = true
 
       // 加载项目列表
-      const api = `http://192.168.1.78/develop/api/D6080759054B4CEF8B96C591495D5CAB.ds?Username=${username}`
+      const api = url_loadProjectList + `?Username=${username}`
       const res = await axios.get(api)
       this.userConfig.projects = res.data
 

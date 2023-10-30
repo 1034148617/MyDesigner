@@ -1,4 +1,3 @@
-import Panel from "./Panel";
-import Menu from "./Menu";
+import CFPanel from "./CFPanel"
 
-export default [Panel,Menu]
+export default [CFPanel]

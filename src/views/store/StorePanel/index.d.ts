@@ -1,14 +1,13 @@
 export enum StorePanelTypeEnum {
+    PROJECT = 'project',
     FILES = 'files',
     SEARCH = 'search',
-    PROJECT = 'project',
-
 }
 
 export enum StorePanelNameEnum {
+    PROJECT = '项目',
     FILES = '文件',
     SEARCH = '搜索',
-    PROJECT = '项目',
 }
 
 export enum StoreFileTypeEnum {

@@ -1,17 +1,5 @@
 import { ResultEnum } from '@/enums/httpEnum'
 
-export enum ComponenctEnum {
-  // 图表创建
-  COMPONENT_HOME = '/component/home/:id(.*)*',
-  COMPONENT_HOME_NAME = 'ComponentHome',
-}
-
-export enum PreviewEnum {
-  //  图表预览
-  COMPONENT_PREVIEW = '/component/preview/:id(.*)*',
-  COMPONENT_PREVIEW_NAME = 'ComponentPreview',
-}
-
 // export enum EditEnum {
 //   //  图表JSON编辑
 //   COMPONENT_EDIT = '/component/edit/:id(.*)*',
@@ -33,13 +21,21 @@ export enum PageEnum {
   BASE_HOME = '/store',
   BASE_HOME_NAME = 'Store',
 
-  // 平台外
-  BASE_HOME_ITEMS = '/store/items',
-  BASE_HOME_ITEMS_NAME = 'Store-Items',
+  // 导航配置
+  // ROUTER_HOME = '/navigate',
+  ROUTER_HOME = '/router',
+  // ROUTER_HOME_NAME = 'Navigate',
+  ROUTER_HOME_NAME = 'Router',
 
-  // 平台
-  BASE_HOME_PLATFORM = '/store/platform',
-  BASE_HOME_PLATFORM_NAME = 'Store-Platform',
+  // 页面创建
+  BASE_COMPONENT_HOME = '/design',
+  COMPONENT_HOME = '/design/:id(.*)*',
+  COMPONENT_HOME_NAME = 'ComponentHome',
+
+  //  页面预览
+  BASE_COMPONENT_PREVIEW = '/preview',
+  COMPONENT_PREVIEW = '/preview/:id(.*)*',
+  COMPONENT_PREVIEW_NAME = 'ComponentPreview',
 
   // 错误
   ERROR_PAGE_NAME_403 = 'ErrorPage403',

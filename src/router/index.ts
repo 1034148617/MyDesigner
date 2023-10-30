@@ -18,8 +18,9 @@ const RootRoute: Array<RouteRecordRaw> = [
         children: [
             ...HttpErrorPage,
             modules.storeRoute,
-            modules.componentRoute,
-            modules.previewRoute
+            modules.designRoute,
+            modules.previewRoute,
+            modules.navigateRoute
         ]
     }
 ]

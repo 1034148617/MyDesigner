@@ -1,4 +1,3 @@
-import MonacoEditor from './index.vue';
-import EditorWorker from './EditorWorker.vue';
+import MonacoEditor from "./index.vue"
 
-export { MonacoEditor, EditorWorker };
+export { MonacoEditor }

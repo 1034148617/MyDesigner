@@ -16,6 +16,11 @@ export type MenuOptionsType = {
 // 左侧导航栏
 const menuOptions: MenuOptionsType[] = [
     {
+        key: StorePanelTypeEnum.PROJECT,
+        icon: renderIcon(DevicesIcon),
+        label: StorePanelNameEnum.PROJECT
+    },
+    {
         key: StorePanelTypeEnum.FILES,
         icon: renderIcon(FolderIcon),
         label: StorePanelNameEnum.FILES
@@ -24,17 +29,12 @@ const menuOptions: MenuOptionsType[] = [
         key: StorePanelTypeEnum.SEARCH,
         icon: renderIcon(SearchIcon),
         label: StorePanelNameEnum.SEARCH
-    },
-    {
-        key: StorePanelTypeEnum.PROJECT,
-        icon: renderIcon(DevicesIcon),
-        label: StorePanelNameEnum.PROJECT
-    },
+    }
 ]
 
 
 // 记录选中值
-const selectValue = ref<string>(menuOptions[0]['key'])
+const selectValue = ref<string>(menuOptions[1]['key'])
 const currentPanel = ref<string>('FilesPanel')
 
 // 选中的对象值

@@ -14,9 +14,9 @@
                 <template #ri-right>
                     <params-config></params-config>
                     <setting></setting>
-                    <theme-select></theme-select>
+                    <theme-select></theme-select>       
                 </template>
-            </layout-header>
+            </layout-header>    
             <n-layout-content content-style="overflow:hidden; display: flex">
                 <!-- 组件面板 -->
                 <content-panel></content-panel>
